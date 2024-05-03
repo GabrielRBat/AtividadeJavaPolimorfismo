@@ -4,7 +4,7 @@ public class Analista extends Funcionario implements BonusSalarial
     private String areaEspecializacao;
     private int metasAtingidas;
 
-    public Analista(String matricula, String nome, String cpf, String experiencia, String areaEspecializacao, int metasAtingidas) 
+    public Analista(int matricula, String nome, String cpf, String experiencia, String areaEspecializacao, int metasAtingidas) 
     {
         super(matricula, nome, cpf);
         this.experiencia = experiencia;

@@ -3,7 +3,7 @@ public class Estagiario extends Funcionario implements BonusSalarial
     private int periodo;
     private String areaAtuacao;
 
-    public Estagiario(String matricula, String nome, String cpf, int periodo, String areaAtuacao) 
+    public Estagiario(int matricula, String nome, String cpf, int periodo, String areaAtuacao) 
     {
         super(matricula, nome, cpf);
         this.periodo = periodo;
@@ -11,14 +11,16 @@ public class Estagiario extends Funcionario implements BonusSalarial
     }
   
     @Override
-    public double calcularBonus() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'calcularBonus'");
+    public double calcularBonus() 
+    {
+        return 0;
     }
+
     @Override
-    protected double calcularSalario() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'calcularSalario'");
+    protected double calcularSalario() 
+    {
+        double salario = valorHora * horasTrab;
+        return salario;
     }
 
     public int getPeriodo() {

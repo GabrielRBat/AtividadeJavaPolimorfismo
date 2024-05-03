@@ -18,6 +18,26 @@ public class Empresa
         }
         return false;
     }
-        
-    
+
+    public static ArrayList<BonusSalarial> getListaFuncionarios() {
+        return listaFuncionarios;
+    }
+
+    public static BonusSalarial buscarFuncionario(int matricula)
+    {
+        for(BonusSalarial funcionario : listaFuncionarios)
+        {
+            if(matricula == funcionario.getMatricula())
+            {
+                return funcionario;
+            }
+        }
+        return null;
+    }
+
+    public static boolean listaFuncionariosIsEmpty()
+    {
+        return listaFuncionarios.isEmpty();
+    }
 }
+

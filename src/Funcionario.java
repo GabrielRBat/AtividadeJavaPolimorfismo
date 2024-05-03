@@ -1,12 +1,12 @@
-public abstract class Funcionario 
+public abstract class Funcionario
 {
-    protected String matricula;
+    protected int matricula;
     protected String nome;
     protected String cpf;
     protected float valorHora;
     protected float horasTrab;
 
-    public Funcionario(String matricula, String nome, String cpf) 
+    public Funcionario(int matricula, String nome, String cpf) 
     {
         this.matricula = matricula;
         this.nome = nome;
@@ -21,11 +21,11 @@ public abstract class Funcionario
         return reclamacao;
     }
 
-    public String getMatricula() {
+    public int getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(String matricula) {
+    public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
 
