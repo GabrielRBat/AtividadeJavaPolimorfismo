@@ -1,6 +1,5 @@
 package controller;
 import interfaces.*;
-
 import java.util.ArrayList;
 
 public class Empresa 
@@ -12,13 +11,17 @@ public class Empresa
         listaFuncionarios.add(funcionario);
     }
 
-    public static boolean removerFuncionario(BonusSalarial funcionario)
+    public static boolean removerFuncionario(int matricula)
     {
-        if(listaFuncionarios.contains(funcionario))
+        for (BonusSalarial tempFuncionario : listaFuncionarios)
         {
-            listaFuncionarios.remove(funcionario);
-            return true;
+            if (tempFuncionario.getMatricula() == matricula) 
+            {
+                listaFuncionarios.remove(tempFuncionario);
+                return true;
+            }
         }
+
         return false;
     }
 
