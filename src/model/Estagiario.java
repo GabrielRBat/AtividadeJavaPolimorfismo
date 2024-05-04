@@ -1,11 +1,14 @@
+package model;
+import interfaces.*;
+
 public class Estagiario extends Funcionario implements BonusSalarial
 {  
     private int periodo;
     private String areaAtuacao;
 
-    public Estagiario(int matricula, String nome, String cpf, int periodo, String areaAtuacao) 
+    public Estagiario(int matricula, String nome, String cpf, float horasTrab, float valorHora,int periodo, String areaAtuacao) 
     {
-        super(matricula, nome, cpf);
+        super(matricula, nome, cpf, horasTrab, valorHora);
         this.periodo = periodo;
         this.areaAtuacao = areaAtuacao;
     }
@@ -39,4 +42,10 @@ public class Estagiario extends Funcionario implements BonusSalarial
         this.areaAtuacao = areaAtuacao;
     }
     
+    @Override
+    public String toString() 
+    {
+        return super.toString() + "Período: " + periodo + "º\n" + 
+        "Área de atuação: " + areaAtuacao;
+    }
 }

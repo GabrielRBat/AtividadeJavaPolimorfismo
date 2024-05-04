@@ -1,11 +1,14 @@
+package model;
+import interfaces.*;
+
 public class Gerente extends Funcionario implements BonusSalarial
 {
     
     private int metasEquipeAtingidas;
 
-    public Gerente(int matricula, String nome, String cpf, int metasEquipeAtingidas) 
+    public Gerente(int matricula, String nome, String cpf, float valorHora, float horasTrab,int metasEquipeAtingidas) 
     {
-        super(matricula, nome, cpf);
+        super(matricula, nome, cpf, horasTrab, valorHora);
         this.metasEquipeAtingidas = metasEquipeAtingidas;
     }
 
@@ -31,5 +34,11 @@ public class Gerente extends Funcionario implements BonusSalarial
 
     public void setMetasEquipeAtingidas(int metasEquipeAtingidas) {
         this.metasEquipeAtingidas = metasEquipeAtingidas;
+    }
+
+    @Override
+    public String toString() 
+    {
+        return super.toString() + "Metas atingidas pela equipe: " + metasEquipeAtingidas;
     }
 }

@@ -1,14 +1,17 @@
+package model;
+import interfaces.*;
+
 public class Analista extends Funcionario implements BonusSalarial
 {
     private String experiencia;
-    private String areaEspecializacao;
+    private String especializacao;
     private int metasAtingidas;
 
-    public Analista(int matricula, String nome, String cpf, String experiencia, String areaEspecializacao, int metasAtingidas) 
+    public Analista(int matricula, String nome, String cpf, float horasTrab, float valorHora ,String experiencia, String especializacao, int metasAtingidas) 
     {
-        super(matricula, nome, cpf);
+        super(matricula, nome, cpf, horasTrab, valorHora);
         this.experiencia = experiencia;
-        this.areaEspecializacao = areaEspecializacao;
+        this.especializacao = especializacao;
         this.metasAtingidas = metasAtingidas;
     }
     
@@ -37,11 +40,11 @@ public class Analista extends Funcionario implements BonusSalarial
     }
 
     public String getAreaEspecializacao() {
-        return areaEspecializacao;
+        return especializacao;
     }
 
     public void setAreaEspecializacao(String areaEspecializacao) {
-        this.areaEspecializacao = areaEspecializacao;
+        this.especializacao = areaEspecializacao;
     }
 
     public int getMetasAtingidas() {
@@ -52,5 +55,11 @@ public class Analista extends Funcionario implements BonusSalarial
         this.metasAtingidas = metasAtingidas;
     }
 
-    
+    @Override
+    public String toString() 
+    {
+        return super.toString() + "Nível de experiência: " + experiencia +
+        "\nÁrea de especialização: " + especializacao + 
+        "\nMetas atingidas: " + metasAtingidas;
+    }
 }

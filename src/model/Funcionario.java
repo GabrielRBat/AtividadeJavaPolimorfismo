@@ -1,3 +1,5 @@
+package model;
+
 public abstract class Funcionario
 {
     protected int matricula;
@@ -6,11 +8,13 @@ public abstract class Funcionario
     protected float valorHora;
     protected float horasTrab;
 
-    public Funcionario(int matricula, String nome, String cpf) 
+    public Funcionario(int matricula, String nome, String cpf, float valorHora, float horasTrab) 
     {
         this.matricula = matricula;
         this.nome = nome;
         this.cpf = cpf;
+        this.valorHora = valorHora;
+        this.horasTrab = horasTrab;
     }
 
     protected abstract double calcularSalario();
@@ -60,7 +64,12 @@ public abstract class Funcionario
     public void setHorasTrab(float horasTrab) {
         this.horasTrab = horasTrab;
     }
-
     
-    
+    @Override
+    public String toString() 
+    {
+        return "Nome: " + nome + "\nCPF: "+cpf+
+        "\nMatrícula: " + matricula + "\nValor Hora: " + valorHora +
+        "\nHoras trabalhadas: " + horasTrab + "\n";
+    }
 }
