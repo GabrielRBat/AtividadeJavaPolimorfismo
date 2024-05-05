@@ -69,7 +69,7 @@ public abstract class Funcionario
     public String toString() 
     {
         return "Nome: " + nome + "\nCPF: "+cpf+
-        "\nMatrícula: " + matricula + "\nValor Hora: " + valorHora +
+        "\nMatrícula: " + matricula + "\nValor Hora: " + valorHora + "R$" +
         "\nHoras trabalhadas: " + horasTrab + "\n";
     }
 }

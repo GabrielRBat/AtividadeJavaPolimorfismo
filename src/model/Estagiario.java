@@ -46,6 +46,7 @@ public class Estagiario extends Funcionario implements BonusSalarial
     public String toString() 
     {
         return super.toString() + "Período: " + periodo + "º\n" + 
-        "Área de atuação: " + areaAtuacao;
+        "Área de atuação: " + areaAtuacao +
+        "\nBonus salarial: " + calcularBonus() +"R$" + "\nBolsa: " + calcularSalario() + "R$";
     }
 }

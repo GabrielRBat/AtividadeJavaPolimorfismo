@@ -96,7 +96,7 @@ public class Sistema {
         BonusSalarial gerente = new Gerente(matricula, nome, cpf, valorHora, horasTrab, metasEquipeAtingidas);
         
         Empresa.adicionarFuncionario(gerente);
-        System.out.println("Gerente =>\n" + gerente.toString() + "\ncadastrado com sucesso!!");
+        System.out.println("\nGerente =>\n" + gerente.toString() + "\ncadastrado com sucesso!!");
     }
 
     private static void cadastrarAnalista()
@@ -129,7 +129,7 @@ public class Sistema {
         BonusSalarial analista = new Analista(matricula, nome, cpf, horasTrab, valorHora, experiencia, especializacao, metasAtingidas);
         Empresa.adicionarFuncionario(analista);
 
-        System.out.println("Anaista =>\n" + analista.toString() + "\ncadastrado com sucesso!!");
+        System.out.println("\nAnaista =>\n" + analista.toString() + "\ncadastrado com sucesso!!");
 
     }
 
@@ -159,16 +159,17 @@ public class Sistema {
         BonusSalarial estagiario = new Estagiario(matricula, nome, cpf, horasTrab, valorHora, periodo, areaAtuacao);
         Empresa.adicionarFuncionario(estagiario);
 
-        System.out.println("Estagiário =>\n" + estagiario + "\ncadastrado com sucesso!!");
+        System.out.println("\nEstagiário =>\n" + estagiario + "\ncadastrado com sucesso!!");
     }
 
     private static void listarFuncionarios()
     {
-        if(Empresa.listaFuncionariosIsEmpty() == false)
+        if(!Empresa.listaFuncionariosIsEmpty())
         {
+            System.out.println("\nFuncionários =>\n");
             for(BonusSalarial funcionario : Empresa.getListaFuncionarios())
             {
-                System.out.println("Funcionários =>\n" + funcionario.toString() + "\n");
+                System.out.println(funcionario.toString() + "\n");
             }
         }
 
@@ -180,22 +181,24 @@ public class Sistema {
 
     private static void listarGerentes()
     {
-        if(Empresa.listaFuncionariosIsEmpty() == false)
+        boolean gerenteFlag = false;
+
+        if(!Empresa.listaFuncionariosIsEmpty())
         {
             for(BonusSalarial gerente : Empresa.getListaFuncionarios())
             {
                 if(gerente instanceof Gerente)
                 {
-                    System.out.println("Gerentes =>\n" + gerente.toString() + "\n");
-                }
-
-                else
-                {
-                    System.out.println("Não há nenhum gerente na lista.");
+                    System.out.println("\nGerentes =>\n" + gerente.toString() + "\n");
+                    gerenteFlag = true;
                 }
             }
-        }
 
+            if(!gerenteFlag)
+            {
+                System.out.println("Nenhum gerente foi encontrado.");
+            }
+        }
         else
         {
             System.out.println("Não há nenhum funcionário na lista.");
@@ -204,22 +207,24 @@ public class Sistema {
 
     private static void listarAnalistas()
     {
-        if(Empresa.listaFuncionariosIsEmpty() == false)
+        boolean analistaFlag = false;
+
+        if(!Empresa.listaFuncionariosIsEmpty())
         {
             for(BonusSalarial gerente : Empresa.getListaFuncionarios())
             {
                 if(gerente instanceof Analista)
                 {
-                    System.out.println("Analisas =>\n" + gerente.toString() + "\n");
-                }
-
-                else
-                {
-                    System.out.println("Não há nenhum analista na lista.");
+                    System.out.println("\nAnalistas =>\n" + gerente.toString() + "\n");
+                    analistaFlag = true;
                 }
             }
-        }
 
+            if(!analistaFlag)
+            {
+                System.out.println("Nenhum analista foi encontrado.");
+            }
+        }
         else
         {
             System.out.println("Não há nenhum funcionário na lista.");
@@ -228,22 +233,24 @@ public class Sistema {
 
     private static void listarEstagiarios()
     {
-        if(Empresa.listaFuncionariosIsEmpty() == false)
+        if(!Empresa.listaFuncionariosIsEmpty())
         {
+            boolean flagEstagiario = false;
+
             for(BonusSalarial gerente : Empresa.getListaFuncionarios())
             {
                 if(gerente instanceof Estagiario)
                 {
-                    System.out.println("Estagiários =>\n" + gerente.toString() + "\n");
-                }
-
-                else
-                {
-                    System.out.println("Não há nenhum estagiário na lista.");
+                    System.out.println("\nEstagiários =>\n" + gerente.toString() + "\n");
+                    flagEstagiario = true;
                 }
             }
-        }
 
+            if(!flagEstagiario)
+            {
+                System.out.println("Nenhum estagiário foi encontrado.");
+            }
+        }
         else
         {
             System.out.println("Não há nenhum funcionário na lista.");
@@ -255,8 +262,14 @@ public class Sistema {
         System.out.println("Digite a matrícula do funcionário que deseja remover.");
         int matricula = Console.lerInt();
 
-        Empresa.removerFuncionario(matricula);
-        System.out.println("Funcionário removido com sucesso!");
+        if(Empresa.removerFuncionario(matricula))
+        {
+            System.out.println("Funcionário removido com sucesso!");
+        }
+        else
+        {
+            System.out.println("Nenhum funcionário foi encontrado com essa matrícula.");
+        }
     }
 
     private static void buscarFuncionario()
@@ -265,7 +278,12 @@ public class Sistema {
         int matricula = Console.lerInt();
 
         BonusSalarial funcionario = Empresa.buscarFuncionario(matricula);
-        System.out.println("Funcionário =>\n" + funcionario + "\nencontrado!");
+        if(funcionario == null)
+        {
+            System.out.println("Funcionário não encontrado!");
+            return;
+        }
+        System.out.println("\nFuncionário =>\n" + funcionario + "\nencontrado!");
     }
 
     public static void executar() {

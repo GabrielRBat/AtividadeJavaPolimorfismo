@@ -19,7 +19,7 @@ public class Analista extends Funcionario implements BonusSalarial
     public double calcularBonus() 
     {
         double salario = valorHora * horasTrab;
-        double bonus = (metasAtingidas/100) * salario;
+        double bonus = ((double) metasAtingidas/100) * salario;
         return bonus;
     }
 
@@ -60,6 +60,8 @@ public class Analista extends Funcionario implements BonusSalarial
     {
         return super.toString() + "Nível de experiência: " + experiencia +
         "\nÁrea de especialização: " + especializacao + 
-        "\nMetas atingidas: " + metasAtingidas;
+        "\nMetas atingidas: " + metasAtingidas +
+        "\nBonus salarial: " + calcularBonus() + "R$" +
+        "\nSalário total: " + calcularSalario() + "R$";
     }
 }

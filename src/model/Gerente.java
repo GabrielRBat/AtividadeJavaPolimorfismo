@@ -16,7 +16,7 @@ public class Gerente extends Funcionario implements BonusSalarial
     public double calcularBonus() 
     {
         double salario = valorHora * horasTrab;
-        double bonus = (metasEquipeAtingidas/100) * salario;
+        double bonus = ((double) metasEquipeAtingidas/100) * salario;
         return bonus;
     }
 
@@ -39,6 +39,8 @@ public class Gerente extends Funcionario implements BonusSalarial
     @Override
     public String toString() 
     {
-        return super.toString() + "Metas atingidas pela equipe: " + metasEquipeAtingidas;
+        return super.toString() + "Metas atingidas pela equipe: " + metasEquipeAtingidas +
+        "\nBonus salarial: " + calcularBonus() + "R$" + 
+        "\nSalário total: " + calcularSalario() + "R$";
     }
 }
